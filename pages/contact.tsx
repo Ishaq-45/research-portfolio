@@ -8,7 +8,7 @@ export default function Contact() {
       <h1 className="text-3xl font-bold">Contact</h1>
       <div className="p-4 bg-neutral-800 rounded-md border border-neutral-800">
         <p className="text-neutral-300">Email: ishaqsm007@gmail.com</p>
-        <p className="text-neutral-300">GitHub: <a href="https://github.com/Ishaq-45" target="_blank" rel="noreferrer" className="text-primary">github.com/Ishaq45</a></p>
+        <p className="text-neutral-300">GitHub: <a href="https://github.com/Ishaq-45" target="_blank" rel="noreferrer" className="text-primary">github.com/Ishaq-45</a></p>
       </div>
     </div>
   )

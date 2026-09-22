@@ -20,7 +20,7 @@ export default function Hero() {
             <a href="/resume" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-md px-4 py-2.5 text-sm font-medium text-neutral-100 underline decoration-neutral-600 underline-offset-4 transition duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900">Download CV</a>
           </div>
 
-          <div className="pt-5 text-sm text-neutral-400">GitHub: <a href="https://github.com/Ishaq45" target="_blank" rel="noreferrer" className="text-violet-300 transition hover:text-violet-200">github.com/Ishaq45</a></div>
+          <div className="pt-5 text-sm text-neutral-400">GitHub: <a href="https://github.com/Ishaq-45" target="_blank" rel="noreferrer" className="text-violet-300 transition hover:text-violet-200">github.com/Ishaq-45</a></div>
 
           <div className="mt-6 lg:mt-10">
             <ResearchSnapshot />

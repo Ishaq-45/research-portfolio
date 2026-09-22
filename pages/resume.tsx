@@ -7,7 +7,7 @@ export default function Resume() {
         <div className="md:col-span-2">
           <div className="card">
             <h1 className="text-2xl font-semibold tracking-tight">SHAIK MOHD ISHAQ</h1>
-            <div className="mt-2 text-sm text-neutral-400">+91 9700330630 · ishaqsm007@gmail.com · <a href="https://github.com/Ishaq45" target="_blank" rel="noreferrer" className="text-violet-300 transition hover:text-violet-200">github.com/Ishaq45</a></div>
+            <div className="mt-2 text-sm text-neutral-400">+91 9700330630 · ishaqsm007@gmail.com · <a href="https://github.com/Ishaq-45" target="_blank" rel="noreferrer" className="text-violet-300 transition hover:text-violet-200">github.com/Ishaq-45</a></div>
 
             <section className="mt-6">
               <h2 className="font-semibold">Professional summary</h2>
