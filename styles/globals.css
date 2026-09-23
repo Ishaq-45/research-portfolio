@@ -2,66 +2,316 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================
+   Global foundation
+   ========================================================= */
+
 :root {
   color-scheme: dark;
+  --page-bg: #09090b;
+  --surface: #111113;
+  --surface-soft: #151518;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent: #a78bfa;
+  --accent-soft: rgba(167, 139, 250, 0.12);
 }
 
 html,
 body,
 #__next {
-  height: 100%;
+  min-height: 100%;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--page-bg);
 }
 
 body {
-  @apply bg-neutral-900 text-neutral-100 antialiased;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  @apply bg-neutral-950 text-neutral-100 antialiased;
+
+  margin: 0;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
   background-image:
-    radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.006));
-  background-size: 24px 24px, 100% 100%;
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(124, 58, 237, 0.08),
+      transparent 34rem
+    ),
+    radial-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.012),
+      rgba(255, 255, 255, 0.004)
+    );
+
+  background-size:
+    100% 100%,
+    24px 24px,
+    100% 100%;
+
+  line-height: 1.6;
 }
+
+/* =========================================================
+   Layout
+   ========================================================= */
 
 .container {
-  @apply mx-auto max-w-[75rem] px-4;
+  @apply mx-auto w-full max-w-[75rem] px-4 sm:px-6 lg:px-8;
 }
 
-.card {
-  @apply rounded-md border border-neutral-800 bg-neutral-800/40 p-4 shadow-sm backdrop-blur-[1px] transition-transform transition-colors duration-200;
+main {
+  min-width: 0;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
-}
+/* =========================================================
+   Typography
+   ========================================================= */
 
 h1,
 h2,
-h3 {
-  letter-spacing: -0.01em;
+h3,
+h4 {
+  letter-spacing: -0.02em;
   scroll-margin-top: 96px;
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  line-height: 1.05;
+  font-weight: 700;
 }
 
 h2 {
-  font-size: 1.375rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  font-weight: 650;
 }
 
 h3 {
   font-size: 1.125rem;
+  line-height: 1.35;
+  font-weight: 600;
 }
+
+p {
+  color: var(--text-secondary);
+}
+
+::selection {
+  background: rgba(167, 139, 250, 0.24);
+  color: #ffffff;
+}
+
+/* =========================================================
+   Research / academic surfaces
+   ========================================================= */
+
+.card {
+  @apply rounded-lg border p-5;
+
+  border-color: var(--border);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.012)
+    ),
+    rgba(17, 17, 19, 0.72);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  backdrop-filter: blur(6px);
+
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.015)
+    ),
+    rgba(17, 17, 19, 0.82);
+
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+/* Research section panels */
+
+.research-panel {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.012)
+    ),
+    rgba(17, 17, 19, 0.68);
+
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+/* Subtle academic divider */
+
+.research-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.025),
+    transparent
+  );
+}
+
+/* =========================================================
+   Links and interactive elements
+   ========================================================= */
+
+a {
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(167, 139, 250, 0.85);
+  outline-offset: 3px;
+}
+
+.focus-ring:focus {
+  @apply ring-2 ring-accent ring-opacity-60 outline-none;
+}
+
+.muted-underline {
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.375rem;
+
+  background: linear-gradient(
+    90deg,
+    rgba(124, 58, 237, 0.18),
+    rgba(124, 58, 237, 0.06)
+  );
+}
+
+/* =========================================================
+   Research tags / metrics / pipeline
+   ========================================================= */
+
+.research-tag {
+  border: 1px solid rgba(167, 139, 250, 0.16);
+  background: rgba(167, 139, 250, 0.055);
+  color: #c4b5fd;
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.research-tag:hover {
+  border-color: rgba(167, 139, 250, 0.28);
+  background: rgba(167, 139, 250, 0.09);
+  transform: translateY(-1px);
+}
+
+.metric-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  content: "";
+  background: linear-gradient(
+    to bottom,
+    rgba(167, 139, 250, 0.8),
+    rgba(167, 139, 250, 0)
+  );
+  opacity: 0.65;
+}
+
+.pipeline-stage {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.pipeline-stage::after {
+  position: absolute;
+  inset: 0 auto 0 -45%;
+  width: 35%;
+
+  content: "";
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(167, 139, 250, 0.18),
+    transparent
+  );
+
+  animation: pipeline-signal 4.8s ease-in-out infinite;
+}
+
+/* =========================================================
+   Animations
+   ========================================================= */
 
 @keyframes fade-up {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -71,10 +321,30 @@ h3 {
 @keyframes pulse-soft {
   0%,
   100% {
-    opacity: 0.8;
+    opacity: 0.72;
   }
+
   50% {
     opacity: 1;
+  }
+}
+
+@keyframes pipeline-signal {
+  0%,
+  25% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  45%,
+  70% {
+    opacity: 1;
+  }
+
+  90%,
+  100% {
+    transform: translateX(420%);
+    opacity: 0;
   }
 }
 
@@ -96,54 +366,97 @@ h3 {
   animation: fade-up 0.6s ease-out both;
 }
 
-.pipeline-stage {
-  position: relative;
-  overflow: hidden;
+/* =========================================================
+   Forms
+   ========================================================= */
+
+input,
+textarea,
+select {
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-primary);
+
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
-.pipeline-stage::after {
-  position: absolute;
-  inset: 0 auto 0 -45%;
-  width: 35%;
-  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.22), transparent);
-  content: '';
-  animation: pipeline-signal 4.8s ease-in-out infinite;
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
-@keyframes pipeline-signal {
-  0%,
-  25% {
-    transform: translateX(0);
-    opacity: 0;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(167, 139, 250, 0.55);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.08);
+}
+
+/* =========================================================
+   Scrollbar
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #09090b;
+  border-radius: 999px;
+  background: #27272a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* =========================================================
+   Mobile refinements
+   ========================================================= */
+
+@media (max-width: 640px) {
+  body {
+    background-size:
+      100% 100%,
+      20px 20px,
+      100% 100%;
   }
-  45%,
-  70% {
-    opacity: 1;
+
+  .card {
+    padding: 1rem;
   }
-  90%,
-  100% {
-    transform: translateX(420%);
-    opacity: 0;
+
+  h1,
+  h2,
+  h3 {
+    scroll-margin-top: 80px;
   }
 }
+
+/* =========================================================
+   Reduced motion / accessibility
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
-}
-
-.focus-ring:focus {
-  @apply ring-2 ring-accent ring-opacity-60 outline-none;
-}
-
-.muted-underline {
-  background: linear-gradient(90deg, rgba(124, 58, 237, 0.18), rgba(124, 58, 237, 0.06));
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.375rem;
 }
